@@ -121,7 +121,7 @@ class MaxErrors
   end
 end
 
-class TestMax < MiniTest::Unit::TestCase
+class TestMax < Minitest::Test
   def test_simple
     i = SimpleMax.new
     %w[m done].each {|r| assert_equal(0, i.collection_stratum(r))}
@@ -380,7 +380,7 @@ class AllPathsEqJoin
   end
 end
 
-class TestGraphPrograms < MiniTest::Unit::TestCase
+class TestGraphPrograms < Minitest::Test
   def test_spath_simple
     i = ShortestPathsL.new
     %w[link path min_cost].each {|r| assert_equal(0, i.collection_stratum(r))}
@@ -746,7 +746,7 @@ class MapToCollection
   end
 end
 
-class TestMap < MiniTest::Unit::TestCase
+class TestMap < Minitest::Test
   def get_val_for_map(i, r)
     i.send(r).current_value.reveal.map {|k,v| [k, v.reveal]}.sort
   end
@@ -1066,7 +1066,7 @@ class NotInToLattice
   end
 end
 
-class TestSet < MiniTest::Unit::TestCase
+class TestSet < Minitest::Test
   def test_set_simple
     i = SimpleSet.new
     %w[s1 done in_t].each {|r| assert_equal(0, i.collection_stratum(r))}
@@ -1293,7 +1293,7 @@ class SimpleSum
   end
 end
 
-class TestSum < MiniTest::Unit::TestCase
+class TestSum < Minitest::Test
   def test_sum_simple
     i = SimpleSum.new
     %w[in_t s1 s2 s3 done].each {|r| assert_equal(0, i.collection_stratum(r))}
@@ -1340,7 +1340,7 @@ class SimpleBag
   end
 end
 
-class TestBag < MiniTest::Unit::TestCase
+class TestBag < Minitest::Test
   def test_bag_simple
     i = SimpleBag.new
     %w[b1 b2 b_union b_intersect done].each do |r|
@@ -1430,7 +1430,7 @@ class LatticeModParent
   end
 end
 
-class TestLatticesWithModules < MiniTest::Unit::TestCase
+class TestLatticesWithModules < Minitest::Test
   def test_lattice_module_simple
     i = LatticeModParent.new
     %w[m1 cnt s1 x1.m1 x1.s1 x2.m1 x2.s1].each {|r| assert_equal(0, i.collection_stratum(r))}
@@ -1476,7 +1476,7 @@ class RescanLattice
   end
 end
 
-class RescanLatticeTests < MiniTest::Unit::TestCase
+class RescanLatticeTests < Minitest::Test
   def test_rescan_lattice
     i = RescanLattice.new
     i.set_input <+ Bud::SetLattice.new([5])
@@ -1547,7 +1547,7 @@ class LatticeEmbedCollExpr
   end
 end
 
-class TestLatticeEmbedDeltas < MiniTest::Unit::TestCase
+class TestLatticeEmbedDeltas < Minitest::Test
   def test_join_deltas
     i = LatticeEmbedJoin.new
     %w[t1 t2 t3 m1 m2].each {|r| assert_equal(0, i.collection_stratum(r))}
@@ -1628,7 +1628,7 @@ class ChannelWithLatticeRhs
   end
 end
 
-class TestChannelWithLatticeRhs < MiniTest::Unit::TestCase
+class TestChannelWithLatticeRhs < Minitest::Test
   def test_channel_rhs
     i = ChannelWithLatticeRhs.new
     i.run_bg
@@ -1657,7 +1657,7 @@ class PendingLatticeMerge
   end
 end
 
-class TestPendingLatticeMerge < MiniTest::Unit::TestCase
+class TestPendingLatticeMerge < Minitest::Test
   def test_pending_merge
     i = PendingLatticeMerge.new
     i.s1 <+ [[5, Bud::MaxLattice.new(10)]]
@@ -1669,7 +1669,7 @@ class TestPendingLatticeMerge < MiniTest::Unit::TestCase
   end
 end
 
-class TestLatticeHashing < MiniTest::Unit::TestCase
+class TestLatticeHashing < Minitest::Test
   def test_lattice_hash_eq
     m1 = Bud::MapLattice.new({:foo => Bud::MaxLattice.new(3)})
     m2 = Bud::MapLattice.new({:foo => Bud::MaxLattice.new(3)})
@@ -1702,7 +1702,7 @@ class BootstrapNoRules
   end
 end
 
-class TestLatticeBootstrapNoRules < MiniTest::Unit::TestCase
+class TestLatticeBootstrapNoRules < Minitest::Test
   def test_bootstrap
     b = BootstrapNoRules.new
     b.tick
@@ -1729,7 +1729,7 @@ class Bug290
   end
 end
 
-class Bug290Test < MiniTest::Unit::TestCase
+class Bug290Test < Minitest::Test
   def test_no_bug
     b = Bug290.new
     5.times do |i|
@@ -1756,7 +1756,7 @@ class MarshalNestedLattices
   end
 end
 
-class TestMarshalNestedLattices < MiniTest::Unit::TestCase
+class TestMarshalNestedLattices < Minitest::Test
   def test_marshal
     b = MarshalNestedLattices.new
     q = Queue.new
